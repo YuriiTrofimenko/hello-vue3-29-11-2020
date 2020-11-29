@@ -1,6 +1,8 @@
 <template lang='pug'>
-div
-| Username: {{user.username}}
+.app
+  span Username {{user.username}} - {{fullName}}
+  strong Followers: {{followers}}
+  button(@click="followUser") follow
 </template>
 
 <script>
@@ -18,16 +20,27 @@ export default {
         isAdmin: true
       }
     }
+  },
+  computed: {
+    fullName () {
+      return `${this.user.firstName} ${this.user.lastName}`
+    }
+  },
+  methods: {
+    followUser () {
+      this.followers++
+    }
   }
 }
 </script>
 
 <style lang='stylus'>
-#app 
+.app 
 	font-family Avenir, Helvetica, Arial, sans-serif
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
+	display flex
+	flex-direction column
 	text-align center
 	color #2c3e50
-	margin-top 60px
 </style>
