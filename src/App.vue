@@ -21,9 +21,19 @@ export default {
       }
     }
   },
+  mounted () {
+    this.followUser()
+  },
   computed: {
     fullName () {
       return `${this.user.firstName} ${this.user.lastName}`
+    }
+  },
+  watch: {
+    followers(newFollowersCount, oldFollowersCount) {
+      if(newFollowersCount < oldFollowersCount) {
+        alert(`User ${this.user.username} has gained a follower`)
+      }
     }
   },
   methods: {
