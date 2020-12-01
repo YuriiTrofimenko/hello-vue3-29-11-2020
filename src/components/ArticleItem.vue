@@ -1,10 +1,10 @@
 <template lang="pug">
-.article-item
-    .user-profile__article
-        .article-item__title
-        |{{ article.title }}
-        .article-item__content
-        |{{ article.content }}
+.article-item(@click="favouriteArticle(article.id)")
+  .user-profile__article
+    .article-item__title
+    |{{ article.title }}
+    .article-item__content
+    |{{ article.content }}
 </template>
 
 <script>
@@ -15,8 +15,13 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    favouriteArticle (id) {
+      this.$emit('favourite', id)
+    }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>
