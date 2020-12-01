@@ -9,13 +9,14 @@
     .user-profile__follower-count
       strong Followers: {{followers}}
   .user-profile__articles-wrapper
-    .user-profile__article(v-for="article in user.articles" :key="article.id")
-      |{{article.title}}
+    ArticleItem(v-for="article in user.articles" :key="article.id" :article="article")
 </template>
 
 <script>
+import ArticleItem from './ArticleItem'
 export default {
-  name: 'App',
+  name: 'UserProfile',
+  components: { ArticleItem },
   data () {
     return {
       followers: 0,
@@ -27,9 +28,9 @@ export default {
         email: 'tyaa@ukr.net',
         isAdmin: false,
         articles: [
-          { id: 1, title: 'Hello VUE 3!' },
-          { id: 2, title: 'Lorem ipsum dolor' },
-          { id: 3, title: 'The third article' }
+          { id: 1, title: 'Hello VUE 3!', content: '1 - lorem ipsum dolor sit amet' },
+          { id: 2, title: 'Lorem ipsum dolor', content: '2 - lorem ipsum dolor sit amet'  },
+          { id: 3, title: 'The third article', content: '3 - lorem ipsum dolor sit amet'  }
         ]
       }
     }
