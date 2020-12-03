@@ -12,6 +12,7 @@
     "pug": "^3.0.0",
     "pug-lint": "^2.6.0",
     "pug-plain-loader": "^1.0.0",
+    "style-resources-loader": "^1.4.1",
     "stylint": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
