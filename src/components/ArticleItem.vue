@@ -1,5 +1,5 @@
 <template lang="pug">
-.article-item(@click="favouriteArticle(article.id)")
+.article-item
   .user-profile__article
     .article-item__title
     |{{ article.title }}
@@ -14,11 +14,6 @@ export default {
     article: {
       type: Object,
       required: true
-    }
-  },
-  methods: {
-    favouriteArticle (id) {
-      this.$emit('favourite', id)
     }
   }
 }
