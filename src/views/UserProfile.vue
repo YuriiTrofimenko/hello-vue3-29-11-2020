@@ -14,28 +14,20 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import ArticleForm from '../components/ArticleForm'
 import ArticleItem from '../components/ArticleItem'
+import { users } from '../assets/users'
 export default {
   name: 'UserProfile',
   components: { ArticleItem, ArticleForm },
   setup () {
+    const route = useRoute()
+    const userId = computed(() => route.params.userId)
     const state = reactive({
       followers: 0,
-      user: {
-        id: 1,
-        username: 'YuriiTrofimenko',
-        firstName: 'Yurii',
-        lastName: 'Trofimenko',
-        email: 'tyaa@ukr.net',
-        isAdmin: false,
-        articles: [
-          { id: 1, title: 'Hello VUE 3!', content: '1 - lorem ipsum dolor sit amet' },
-          { id: 2, title: 'Lorem ipsum dolor', content: '2 - lorem ipsum dolor sit amet'  },
-          { id: 3, title: 'The third article', content: '3 - lorem ipsum dolor sit amet'  }
-        ]
-      },
+      user: users.find(u => u.id.toString() === userId.value) || users[0],
       favouriteArticleId: null,
     })
     function addArticle(newArticleContent) {
